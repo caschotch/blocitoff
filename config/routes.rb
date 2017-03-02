@@ -4,14 +4,13 @@ Rails.application.routes.draw do
   get 'users/show'
 
   devise_for :users
-  get 'welcome/index'
 
   get 'users/show'
 
   root 'welcome#index'
 
 resources :users, only: [:show] do
-  resources :items, only: [:create]
+  resources :items, only: [:create, :destroy]
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

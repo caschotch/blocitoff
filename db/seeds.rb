@@ -3,7 +3,8 @@ require 'faker'
 10.times do
   User.create!(
   email: Faker::Internet.email,
-  password: Faker::Internet.password(8,16)
+  password: "password",
+  confirmed_at: Time.now
   )
 end
 users = User.all

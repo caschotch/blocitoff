@@ -18,7 +18,20 @@ RSpec.describe ItemsController, type: :controller do
       post :create, user_id: @user.id, item: {name: @item.name}
       expect(response).to redirect_to [@user]
     end
+  end
 
+  describe "DELETE destroy" do
+    it "deletes the item" do
+      # got from the blocipedia rspec
+      delete :destroy, user_id: @user.id, id: @item.id
+      count = Item.where({id: @item.id}).count
+      expect(count).to eq 0
+    end
+
+    it "returns http success" do
+        delete :destroy, user_id: @user.id, id: @item.id
+        expect(response).to redirect_to [@user]
+    end
   end
 
 end
