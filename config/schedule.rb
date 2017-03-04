@@ -21,5 +21,5 @@
 set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
 
 every 7.day, :at => "12:01 am" do
-  rake "todo"
+  rake "todo:delete_items"
 end
